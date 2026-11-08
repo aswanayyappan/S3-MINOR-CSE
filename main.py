@@ -15,6 +15,14 @@ import os
 from datetime import datetime
 from typing import List, Dict, Any
 
+# Ensure terminal stdout/stderr handles UTF-8 gracefully on Windows
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 from config import (
     READINGS_CSV_PATH,
     ERROR_LOG_PATH,
@@ -22,7 +30,8 @@ from config import (
     DEFAULT_TARIFF_SLABS,
     DEFAULT_FIXED_CHARGE,
     DEFAULT_TAX_RATE,
-    DEFAULT_HIGH_USAGE_THRESHOLD
+    DEFAULT_HIGH_USAGE_THRESHOLD,
+    CURRENCY
 )
 from tariff import calculate_units_consumed, calculate_bill, format_bill_summary
 from data_manager import (
@@ -146,7 +155,7 @@ def prompt_add_reading():
             print(f"     Date          : {date_str}")
             print(f"     Units Consumed: {units:.2f} kWh")
             print(f"     Status        : {status}")
-            print(f"     Estimated Bill: ₹{bill_info['total_bill']:.2f}")
+            print(f"     Estimated Bill: {CURRENCY} {bill_info['total_bill']:.2f}")
     except Exception as e:
         log_error(f"Error during reading calculation and save: {e}")
         print(f" [!] System error: {e}")
@@ -161,7 +170,7 @@ def display_all_readings():
         return
 
     print("-" * 75)
-    print(f"{'ID':<4} {'Date':<12} {'Prev (kWh)':<12} {'Curr (kWh)':<12} {'Units':<10} {'Bill (₹)':<12} {'Status'}")
+    print(f"{'ID':<4} {'Date':<12} {'Prev (kWh)':<12} {'Curr (kWh)':<12} {'Units':<10} {'Bill (Rs)':<12} {'Status'}")
     print("-" * 75)
     for r in readings:
         print(f"{r['id']:<4} {r['date']:<12} {r['prev_reading']:<12.1f} {r['curr_reading']:<12.1f} "
@@ -227,7 +236,7 @@ def handle_high_consumption_analysis():
             rec = next((r for r in readings if r["date"] == date), None)
             if rec:
                 excess = rec["units"] - DEFAULT_HIGH_USAGE_THRESHOLD
-                print(f"   [!] Date: {date} | Usage: {rec['units']} kWh (+{excess:.1f} kWh over threshold) | Bill: ₹{rec['bill_amount']:.2f}")
+                print(f"   [!] Date: {date} | Usage: {rec['units']} kWh (+{excess:.1f} kWh over threshold) | Bill: {CURRENCY} {rec['bill_amount']:.2f}")
 
         # Set operations output
         print("\n Set Analysis Insights:")
@@ -272,13 +281,13 @@ def handle_visualizations():
 def display_tariff_structure():
     """Display configured tariff slabs and rates."""
     print("\n--- [7] Current Configurable Tariff Slabs ---")
-    print(f"{'Slab #':<8} {'Min Units':<12} {'Max Units':<12} {'Rate per Unit (₹)'}")
+    print(f"{'Slab #':<8} {'Min Units':<12} {'Max Units':<12} {'Rate per Unit'}")
     print("-" * 52)
     for idx, (s_min, s_max, rate) in enumerate(DEFAULT_TARIFF_SLABS, start=1):
         max_str = "Above" if s_max == float('inf') else f"{int(s_max)}"
-        print(f"{idx:<8} {int(s_min):<12} {max_str:<12} ₹{rate:.2f}")
+        print(f"{idx:<8} {int(s_min):<12} {max_str:<12} {CURRENCY} {rate:.2f}")
     print("-" * 52)
-    print(f" Fixed Meter Charge     : ₹{DEFAULT_FIXED_CHARGE:.2f}")
+    print(f" Fixed Meter Charge     : {CURRENCY} {DEFAULT_FIXED_CHARGE:.2f}")
     print(f" Electricity Duty / Tax : {DEFAULT_TAX_RATE * 100:.1f}%")
     print(f" High Usage Threshold   : {DEFAULT_HIGH_USAGE_THRESHOLD} kWh")
 

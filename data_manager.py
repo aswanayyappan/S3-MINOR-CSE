@@ -8,7 +8,7 @@ import os
 import csv
 from datetime import datetime
 from typing import List, Dict, Any, Set
-from config import READINGS_CSV_PATH, ERROR_LOG_PATH, REPORT_TXT_PATH
+from config import READINGS_CSV_PATH, ERROR_LOG_PATH, REPORT_TXT_PATH, CURRENCY
 
 
 def log_error(error_message: str, file_path: str = ERROR_LOG_PATH) -> None:
@@ -187,9 +187,9 @@ def generate_consumption_report(
         sub_sep,
         f" Total Billing Cycles Recorded : {stats.get('count', 0)}",
         f" Total Units Consumed (kWh)   : {stats.get('total_units', 0.0):.2f} kWh",
-        f" Total Electricity Billed     : ₹{stats.get('total_cost', 0.0):.2f}",
+        f" Total Electricity Billed     : {CURRENCY} {stats.get('total_cost', 0.0):.2f}",
         f" Average Consumption per Period: {stats.get('avg_units', 0.0):.2f} kWh",
-        f" Average Bill per Period      : ₹{stats.get('avg_cost', 0.0):.2f}",
+        f" Average Bill per Period      : {CURRENCY} {stats.get('avg_cost', 0.0):.2f}",
         f" Minimum Consumption          : {stats.get('min_units', 0.0):.2f} kWh ({stats.get('min_date', 'N/A')})",
         f" Maximum (Peak) Consumption   : {stats.get('max_units', 0.0):.2f} kWh ({stats.get('max_date', 'N/A')})",
         "",
@@ -204,7 +204,7 @@ def generate_consumption_report(
             matching = next((r for r in readings if r["date"] == date), None)
             if matching:
                 lines.append(
-                    f"   [!] Date: {date} | Units: {matching['units']} kWh | Bill: ₹{matching['bill_amount']:.2f}"
+                    f"   [!] Date: {date} | Units: {matching['units']} kWh | Bill: {CURRENCY} {matching['bill_amount']:.2f}"
                 )
     else:
         lines.append("  No high energy consumption periods detected. Consumption is within normal limits.")
@@ -213,7 +213,7 @@ def generate_consumption_report(
         "",
         "3. COMPLETE CONSUMPTION LOG TABLE",
         sub_sep,
-        f"{'ID':<4} {'Date':<12} {'Prev (kWh)':<12} {'Curr (kWh)':<12} {'Units':<10} {'Bill (₹)':<12} {'Status'}",
+        f"{'ID':<4} {'Date':<12} {'Prev (kWh)':<12} {'Curr (kWh)':<12} {'Units':<10} {'Bill (Rs)':<12} {'Status'}",
         sub_sep,
     ])
 

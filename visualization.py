@@ -104,8 +104,8 @@ def plot_period_comparison(
 
     # Secondary Y-axis for Bill Amount
     ax2 = ax1.twinx()
-    bar2 = ax2.bar(x + width/2, bills, width, label='Bill Amount (₹)', color='#d62728', alpha=0.85)
-    ax2.set_ylabel("Estimated Bill Amount (₹)", color='#d62728', fontsize=11, labelpad=8)
+    bar2 = ax2.bar(x + width/2, bills, width, label='Bill Amount (Rs.)', color='#d62728', alpha=0.85)
+    ax2.set_ylabel("Estimated Bill Amount (Rs.)", color='#d62728', fontsize=11, labelpad=8)
     ax2.tick_params(axis='y', labelcolor='#d62728')
 
     plt.title("Comparative Analysis: Energy Consumption vs Estimated Bill Amount", fontsize=13, fontweight='bold', pad=12)
@@ -166,7 +166,7 @@ def plot_cost_scatter(
 
     ax.set_title("Scatter Plot: Units Consumed vs Electricity Bill Amount", fontsize=13, fontweight='bold', pad=12)
     ax.set_xlabel("Units Consumed (kWh)", fontsize=11, labelpad=8)
-    ax.set_ylabel("Total Bill Amount (₹)", fontsize=11, labelpad=8)
+    ax.set_ylabel("Total Bill Amount (Rs.)", fontsize=11, labelpad=8)
     ax.grid(True, linestyle=':', alpha=0.6)
     ax.legend(loc='upper left', frameon=True)
 

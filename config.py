@@ -23,12 +23,14 @@ REPORT_TXT_PATH = os.path.join(REPORTS_DIR, "consumption_report.txt")
 
 # Configurable Tariff Structure (Tiered / Slab Tariff)
 # Represented as a list of immutable tuples: (min_units, max_units, rate_per_unit)
-# Currency: INR (₹) / standard currency units
+# Currency: Rs. (standard currency units)
+CURRENCY = "Rs."
+
 DEFAULT_TARIFF_SLABS = [
-    (0, 100, 3.00),         # Slab 1: 0 to 100 units @ ₹3.00 / unit
-    (101, 300, 4.50),       # Slab 2: 101 to 300 units @ ₹4.50 / unit
-    (301, 500, 6.50),       # Slab 3: 301 to 500 units @ ₹6.50 / unit
-    (501, float('inf'), 8.00) # Slab 4: Above 500 units @ ₹8.00 / unit
+    (0, 100, 3.00),         # Slab 1: 0 to 100 units @ Rs. 3.00 / unit
+    (101, 300, 4.50),       # Slab 2: 101 to 300 units @ Rs. 4.50 / unit
+    (301, 500, 6.50),       # Slab 3: 301 to 500 units @ Rs. 6.50 / unit
+    (501, float('inf'), 8.00) # Slab 4: Above 500 units @ Rs. 8.00 / unit
 ]
 
 # Additional Charges

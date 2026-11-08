@@ -5,7 +5,7 @@ Demonstrates functions, parameters, return values, loops, and conditional statem
 """
 
 from typing import List, Tuple, Dict, Any
-from config import DEFAULT_TARIFF_SLABS, DEFAULT_FIXED_CHARGE, DEFAULT_TAX_RATE
+from config import DEFAULT_TARIFF_SLABS, DEFAULT_FIXED_CHARGE, DEFAULT_TAX_RATE, CURRENCY
 
 
 def calculate_units_consumed(previous_reading: float, current_reading: float) -> float:
@@ -131,16 +131,16 @@ def format_bill_summary(bill: Dict[str, Any]) -> str:
         " Slab Tier Breakdown:",
     ]
     for slab_label, units, rate, cost in bill["slab_breakdown"]:
-        lines.append(f"   * Slab ({slab_label} units) : {units:6.2f} kWh @ ₹{rate:4.2f}/unit = ₹{cost:7.2f}")
+        lines.append(f"   * Slab ({slab_label} units) : {units:6.2f} kWh @ {CURRENCY} {rate:4.2f}/unit = {CURRENCY} {cost:7.2f}")
         
     lines.extend([
         "--------------------------------------------------",
-        f" Energy Charges       : ₹{bill['energy_charges']:.2f}",
-        f" Fixed Monthly Charge : ₹{bill['fixed_charge']:.2f}",
-        f" Subtotal             : ₹{bill['subtotal']:.2f}",
-        f" Electricity Tax ({bill['tax_rate_percent']}%) : ₹{bill['tax_amount']:.2f}",
+        f" Energy Charges       : {CURRENCY} {bill['energy_charges']:.2f}",
+        f" Fixed Monthly Charge : {CURRENCY} {bill['fixed_charge']:.2f}",
+        f" Subtotal             : {CURRENCY} {bill['subtotal']:.2f}",
+        f" Electricity Tax ({bill['tax_rate_percent']}%) : {CURRENCY} {bill['tax_amount']:.2f}",
         "==================================================",
-        f" TOTAL AMOUNT PAYABLE : ₹{bill['total_bill']:.2f}",
+        f" TOTAL AMOUNT PAYABLE : {CURRENCY} {bill['total_bill']:.2f}",
         "=================================================="
     ])
     return "\n".join(lines)
