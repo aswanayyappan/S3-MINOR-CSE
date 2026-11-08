@@ -15,3 +15,6 @@ venv.bak/
 .vscode/
 .idea/
 *.swp
+
+# Runtime log files
+logs/*.log

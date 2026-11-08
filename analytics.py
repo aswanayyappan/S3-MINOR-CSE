@@ -130,3 +130,4 @@ def analyze_seasonal_patterns(readings: List[Dict[str, Any]]) -> Dict[str, Any]:
         "summer_periods": summer_periods,
         "summer_high_peaks": summer_high_peaks
     }
+

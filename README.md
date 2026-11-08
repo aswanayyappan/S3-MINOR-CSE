@@ -294,3 +294,4 @@ The project architecture is designed for seamless future extension into an **IoT
 * **Course:** Programming Foundations for Engineers (25MNCST309)
 * **Regulation:** 2025
 * **Category:** Project-Based Learning (PBL)
+

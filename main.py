@@ -339,8 +339,8 @@ def main():
                 sys.exit(0)
             else:
                 print(" [!] Invalid option. Please enter a number between 1 and 9.")
-        except KeyboardInterrupt:
-            print("\n\n Program interrupted by user. Exiting...")
+        except (KeyboardInterrupt, EOFError):
+            print("\n\n Program exiting...")
             sys.exit(0)
         except Exception as e:
             log_error(f"Unexpected crash in main loop: {e}")
