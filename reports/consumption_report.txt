@@ -1,0 +1,50 @@
+======================================================================
+   SMART ELECTRICITY USAGE AND BILL ANALYZER - ENGINEERING REPORT
+   Generated on: 2026-11-08 15:02:13
+======================================================================
+
+1. EXECUTIVE SUMMARY & STATISTICAL METRICS
+----------------------------------------------------------------------
+ Total Billing Cycles Recorded : 12
+ Total Units Consumed (kWh)   : 3120.00 kWh
+ Total Electricity Billed     : ₹13797.01
+ Average Consumption per Period: 260.00 kWh
+ Average Bill per Period      : ₹1149.75
+ Minimum Consumption          : 180.00 kWh (2025-01-31)
+ Maximum (Peak) Consumption   : 380.00 kWh (2025-05-31)
+
+2. HIGH CONSUMPTION PERIODS (EXCEEDING THRESHOLD)
+----------------------------------------------------------------------
+ Total High-Usage Periods Detected: 6
+   [!] Date: 2025-04-30 | Units: 310.0 kWh | Bill: ₹1380.75
+   [!] Date: 2025-05-31 | Units: 380.0 kWh | Bill: ₹1858.50
+   [!] Date: 2025-06-30 | Units: 360.0 kWh | Bill: ₹1722.00
+   [!] Date: 2025-07-31 | Units: 280.0 kWh | Bill: ₹1218.00
+   [!] Date: 2025-08-31 | Units: 255.0 kWh | Bill: ₹1099.88
+   [!] Date: 2025-12-31 | Units: 250.0 kWh | Bill: ₹1076.25
+
+3. COMPLETE CONSUMPTION LOG TABLE
+----------------------------------------------------------------------
+ID   Date         Prev (kWh)   Curr (kWh)   Units      Bill (₹)     Status
+----------------------------------------------------------------------
+1    2025-01-31   1000.0       1180.0       180.0      745.50       Normal
+2    2025-02-28   1180.0       1375.0       195.0      816.38       Normal
+3    2025-03-31   1375.0       1610.0       235.0      1005.38      Normal
+4    2025-04-30   1610.0       1920.0       310.0      1380.75      High Usage
+5    2025-05-31   1920.0       2300.0       380.0      1858.50      High Usage
+6    2025-06-30   2300.0       2660.0       360.0      1722.00      High Usage
+7    2025-07-31   2660.0       2940.0       280.0      1218.00      High Usage
+8    2025-08-31   2940.0       3195.0       255.0      1099.88      High Usage
+9    2025-09-30   3195.0       3435.0       240.0      1029.00      Normal
+10   2025-10-31   3435.0       3660.0       225.0      958.12       Normal
+11   2025-11-30   3660.0       3870.0       210.0      887.25       Normal
+12   2025-12-31   3870.0       4120.0       250.0      1076.25      High Usage
+----------------------------------------------------------------------
+
+4. ENGINEERING RECOMMENDATIONS FOR ENERGY CONSERVATION
+----------------------------------------------------------------------
+ * High consumption periods usually correlate with seasonal cooling/heating appliances.
+ * Transitioning to BEE 5-Star rated appliances can reduce power load by up to 25%.
+ * Shifting energy-intensive operations to off-peak slots prevents entering higher tariff slabs.
+ * Future Scope: Interfacing IoT CT sensor modules for automated real-time meter telemetry.
+======================================================================
