@@ -41,31 +41,34 @@ Household electricity management is often reactive—consumers receive monthly b
 
 This project strictly implements every syllabus requirement of **Programming Foundations for Engineers (Course Code: 25MNCST309)**:
 
-| Unit & Title | Syllabus Topics Covered | Project Implementation |
+| Unit & Title | Syllabus Topics Covered | Project Implementation in `main.py` |
 | :--- | :--- | :--- |
-| **Unit 1: Computational Thinking & Python Fundamentals** | Variables, data types, arithmetic operators, I/O statements, conditional statements (`if-elif-else`), iterative loops (`while`, `for`), exception handling (`try-except`). | Input validation loops, reading difference checks ($Curr \ge Prev$), safe numeric and date parsing, interactive CLI loop in [`main.py`](file:///c:/programming/aswan%20minor%20s3/main.py). |
-| **Unit 2: Functions, Modular Programming & Engineering Computation** | User-defined functions, parameters, return values, variable scope, modular design, standard Python libraries (`csv`, `datetime`, `math`, `os`, `sys`). | Separation of responsibilities across [`config.py`](file:///c:/programming/aswan%20minor%20s3/config.py), [`tariff.py`](file:///c:/programming/aswan%20minor%20s3/tariff.py), [`data_manager.py`](file:///c:/programming/aswan%20minor%20s3/data_manager.py), [`analytics.py`](file:///c:/programming/aswan%20minor%20s3/analytics.py), and [`visualization.py`](file:///c:/programming/aswan%20minor%20s3/visualization.py). |
-| **Unit 3: Data Structures and File Handling** | Lists, Tuples, Dictionaries, Sets. Manipulation of measurement data, file handling (CSV and text files), logs, and summary reports. | Meter records stored as dictionaries inside lists; tariff slabs as immutable tuples; peak dates as unique sets with set operations; CSV read/write and text report/log generation. |
-| **Unit 4: Data Visualization, Version Control & PBL Mini Project** | Data visualization with Matplotlib (line charts, bar charts, scatter plots). Report generation, Git/GitHub repository management, version control, and commit practices. | 3 distinct Matplotlib charts, report export, comprehensive documentation, and Git version control setup. |
+| **Unit 1: Computational Thinking & Python Fundamentals** | Variables, data types, arithmetic operators, I/O statements, conditional statements (`if-elif-else`), iterative loops (`while`, `for`), exception handling (`try-except`). | **Section 2 & Section 6:** Input validation loops, reading difference checks ($Curr \ge Prev$), safe numeric and date parsing, interactive CLI loop in [`main.py`](file:///c:/programming/aswan%20minor%20s3/main.py). |
+| **Unit 2: Functions, Modular Programming & Engineering Computation** | User-defined functions, parameters, return values, variable scope, modular design, standard Python libraries (`csv`, `datetime`, `math`, `os`, `sys`). | **Section 2:** Reusable engineering computation functions (`calculate_units_consumed`, `calculate_bill`, `format_bill_summary`) with clear parameters and return types. |
+| **Unit 3: Data Structures and File Handling** | Lists, Tuples, Dictionaries, Sets. Manipulation of measurement data, file handling (CSV and text files), logs, and summary reports. | **Section 3 & Section 4:** Meter records as dictionaries inside lists; tariff slabs as immutable tuples; peak dates as unique sets with set operations; CSV read/write and text report/log generation. |
+| **Unit 4: Data Visualization, Version Control & PBL Mini Project** | Data visualization with Matplotlib (line charts, bar charts, scatter plots). Report generation, Git/GitHub repository management, version control, and commit practices. | **Section 5:** 3 distinct Matplotlib charts (Line, Bar, Scatter), report export, comprehensive documentation, and Git version control setup. |
 
 ---
 
-## 🏗️ System Architecture & Modular Structure
+## 🏗️ System Architecture & File Structure
+
+The entire application is completely self-contained in a single, well-documented Python file [`main.py`](file:///c:/programming/aswan%20minor%20s3/main.py):
 
 ```
 aswan minor s3/
 │
-├── config.py                 # System configuration, tariff slabs, directories, thresholds
-├── tariff.py                 # Progressive tariff calculation engine
-├── data_manager.py           # CSV storage, error logging, and text report generation
-├── analytics.py              # Statistical computing with Lists, Tuples, Dicts, and Sets
-├── visualization.py          # Matplotlib chart rendering (Line, Bar, Scatter)
-├── main.py                   # User interface and main CLI execution flow
+├── main.py                   # Complete Self-Contained Project (Sections 1 through 6)
+│                             # Section 1: Configuration & Constants
+│                             # Section 2: Tariff Engine & Engineering Computation
+│                             # Section 3: File Handling & Error Logging
+│                             # Section 4: Data Structures & Analytics (Lists, Tuples, Dicts, Sets)
+│                             # Section 5: Data Visualization (Matplotlib Line, Bar, Scatter)
+│                             # Section 6: Interactive CLI & Input Validation
 │
 ├── data/
 │   └── readings.csv          # Persistent CSV database of meter readings
 ├── logs/
-│   └── error_log.txt         # Timestamped error and exception logs
+│   └── .gitkeep              # Error logging directory (runtime logs saved here)
 └── reports/
     ├── consumption_report.txt# Auto-generated engineering analysis report
     └── charts/
