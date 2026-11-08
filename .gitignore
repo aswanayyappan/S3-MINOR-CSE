@@ -18,3 +18,5 @@ venv.bak/
 
 # Runtime log files
 logs/*.log
+logs/*.txt
+!logs/.gitkeep
