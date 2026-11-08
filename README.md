@@ -270,7 +270,7 @@ git commit -m "feat: initial release of Smart Electricity Usage and Bill Analyze
 ### 3. Link to GitHub Remote Repository
 ```bash
 git branch -M main
-git remote add origin https://github.com/<your-username>/smart-electricity-analyzer.git
+git remote add origin https://github.com/aswanayyappan/S3-MINOR-CSE.git
 git push -u origin main
 ```
 
